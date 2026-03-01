@@ -39,14 +39,20 @@ h1{
 	border-radius: 1vw;
 	border: 2px solid black;
 }
+.form input:focus{
+	outline: none;
+}
 .form input[type='submit']{
 	padding: 1vh 1vw;
 	background-color: rgb(255, 85, 0);
 	cursor: pointer;
+	color: white;
+	font-weight: 500;
 }
 #history{
 	height: 45%;
 	width: 90%;
+	overflow-y: scroll;
 }
 #history p{
 	color: white;
@@ -55,6 +61,7 @@ h1{
 	padding: .7vh .7vw;
 	border-radius: 1vmin;
 	transition-duration: 200ms;
+	margin: 0.5vh 1vw;
 }
 #history p:hover{
 	cursor: pointer;

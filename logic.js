@@ -1,9 +1,38 @@
+// initial vairables
 let details = document.querySelector('.details');
 let form = document.querySelector('form');
 let input = document.getElementById('city');
+let historyArea = document.getElementById('history');
 
-let his = JSON.parse(localStorage.getItem('history') || []);
+let his = JSON.parse(localStorage.getItem('history')) || [];    // the actual history array
+let hisCities = []; // array to store the p elements of history
 
+// Function to populate the history
+function populateHistory() {
+    historyArea.innerHTML = '';
+    hisCities = [];
+    his.forEach(city=>{
+        let cityP = document.createElement('p');
+        cityP.textContent = city;
+        historyArea.appendChild(cityP);
+        hisCities.push(cityP);
+    })
+}
+
+populateHistory();
+
+// re-fetching the weather of the history cities
+const historySearch = () => {
+    hisCities.forEach(city=>{
+    city.addEventListener('click', (e)=>{
+        let city = e.target.textContent;
+        details.innerHTML = 'Loading...'
+        getWeatherDetails(city);
+        console.log('clicked', e.target.textContent)
+    })
+})};
+
+historySearch();
 
 // this is the function to get the City Name. By Default the city's value is Delhi
 async function getCityName(cityName = "Delhi") {
@@ -94,10 +123,16 @@ timezone=auto`
         details.appendChild(humidityDOM);
         details.appendChild(windDOM);
 
-        let tempArr = JSON.parse(localStorage.getItem('history') || '[]');
-        tempArr.push(city);
-        localStorage.setItem('history', JSON.stringify(tempArr));
-        his = JSON.parse(localStorage.getItem('history'));
+        // dealing with the local storage
+        let tempArr = JSON.parse(localStorage.getItem('history')) || [];
+        if(!his.includes(city)){
+            tempArr.push(city);
+            localStorage.setItem('history', JSON.stringify(tempArr));
+            his = JSON.parse(localStorage.getItem('history'));
+        }
+
+        populateHistory(); // repopulating the entire history array
+        historySearch();    // in initiating the search history function
 
     } catch (err) {
         details.innerHTML = '';
@@ -116,4 +151,7 @@ form.addEventListener('submit', (e)=>{
     let city = input.value;
     details.innerHTML = 'Loading...'
     getWeatherDetails(city);
+    input.value = '';
 })
+
+
