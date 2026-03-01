@@ -66,25 +66,27 @@ timezone=auto`
         // appending the values in the DOM.
         let cityDOM = document.createElement('div');
         cityDOM.className = 'info-strip';
-        cityDOM.textContent = `City: ${city}`
+        cityDOM.innerHTML = `<p>City: </p><p>${city}</p>`;
 
         let temperatureDOM = document.createElement('div');
         temperatureDOM.className = 'info-strip';
-        temperatureDOM.textContent = `Temperature: ${temperature}${temperatureUnit}`;
+        temperatureDOM.innerHTML = `<p>Temperature: </p><p>${temperature}${temperatureUnit}</p>`;
 
         let weatherDOM = document.createElement('div');
         weatherDOM.className = 'info-strip';
-        weatherDOM.textContent = `Weather: ${weather}`;
+        weatherDOM.innerHTML = `<p>Weather: </p><p>${weather}</p>`;
 
         let humidityDOM = document.createElement('div');
         humidityDOM.className = 'info-strip';
-        humidityDOM.textContent = `Humidity: ${humidity}${humidity_unit}`;
+        humidityDOM.innerHTML = `<p>Humidity: </p><p>${humidity}${humidity_unit}</p>`;
 
         let windDOM = document.createElement('div');
         windDOM.className = 'info-strip';
-        windDOM.textContent = `Wind: ${wind}${wind_unit}`;
+        windDOM.innerHTML = `<p>Wind: </p><p>${wind}${wind_unit}</p>`;
 
-        details.appendChild(cityDOM)
+        // removing the previous data and showing the latest one
+        details.innerHTML = '';
+        details.appendChild(cityDOM);
         details.appendChild(temperatureDOM);
         details.appendChild(weatherDOM);
         details.appendChild(humidityDOM);
@@ -95,6 +97,8 @@ timezone=auto`
         details.innerHTML = '';
         console.log(err);
         let errCard = document.createElement('div');
+        errCard.style.textAlign = 'center';
+        errCard.style.fontSize = '2rem';
         errCard.textContent = 'Data Not Found';
         details.appendChild(errCard);
     }
