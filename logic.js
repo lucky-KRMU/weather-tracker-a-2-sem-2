@@ -1,4 +1,6 @@
 let details = document.querySelector('.details');
+let form = document.querySelector('form');
+let input = document.getElementById('city');
 
 
 // this is the function to get the City Name. By Default the city's value is Delhi
@@ -90,8 +92,17 @@ timezone=auto`
 
 
     } catch (err) {
+        details.innerHTML = '';
         console.log(err);
+        let errCard = document.createElement('div');
+        errCard.textContent = 'Data Not Found';
+        details.appendChild(errCard);
     }
 }
 
-getWeatherDetails()
+// linking the form with the api to fetch the data
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    let city = input.value;
+    getWeatherDetails(city);
+})
