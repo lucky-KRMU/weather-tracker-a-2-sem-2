@@ -108,5 +108,6 @@ timezone=auto`
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
     let city = input.value;
+    details.innerHTML = 'Loading...'
     getWeatherDetails(city);
 })
