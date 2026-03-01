@@ -2,6 +2,47 @@
 	margin:0;
 	padding:0;
 }
+body{
+	background-color: rgb(3, 42, 114);
+}
 h1{
 	text-align: center;
+	height: 10vh;
+	width: 100vw;
+}
+#container{
+	height: 90vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	gap: 5%;
+}
+.form{
+	height: 80%;
+	width: 40%;
+	background-color: whitesmoke;
+	border-radius: 1vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 5vh;
+}
+.form input{
+	font-size: 1.2rem;
+	padding: 1vh 1vw;
+	border-radius: 1vw;
+}
+.form input[type='submit']{
+	padding: 1vh 1vw;
+	background-color: rgb(255, 85, 0);
+	cursor: pointer;
+}
+.result{
+	height: 80%;
+	width: 40%;
+	background-color: whitesmoke;
+	border-radius: 1vw;
 }
