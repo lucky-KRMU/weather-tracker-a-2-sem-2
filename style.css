@@ -66,6 +66,8 @@ h1{
 #history p:hover{
 	cursor: pointer;
 	border-radius: 2vmin;
+	transform: scale(1.1);
+	outline: 1px solid black;
 }
 .result{
 	height: 80%;
