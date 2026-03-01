@@ -45,19 +45,20 @@ h1{
 	cursor: pointer;
 }
 #history{
-	height: 50%;
+	height: 45%;
 	width: 90%;
 }
 #history p{
 	color: white;
 	background-color: rgb(225, 85, 0);
 	display: inline-block;
-	padding: .7vh .5vw;
+	padding: .7vh .7vw;
 	border-radius: 1vmin;
+	transition-duration: 200ms;
 }
 #history p:hover{
 	cursor: pointer;
-	border-radius: 1.2vmin;
+	border-radius: 2vmin;
 }
 .result{
 	height: 80%;

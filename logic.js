@@ -2,6 +2,8 @@ let details = document.querySelector('.details');
 let form = document.querySelector('form');
 let input = document.getElementById('city');
 
+let his = JSON.parse(localStorage.getItem('history') || []);
+
 
 // this is the function to get the City Name. By Default the city's value is Delhi
 async function getCityName(cityName = "Delhi") {
@@ -92,6 +94,10 @@ timezone=auto`
         details.appendChild(humidityDOM);
         details.appendChild(windDOM);
 
+        let tempArr = JSON.parse(localStorage.getItem('history') || '[]');
+        tempArr.push(city);
+        localStorage.setItem('history', JSON.stringify(tempArr));
+        his = JSON.parse(localStorage.getItem('history'));
 
     } catch (err) {
         details.innerHTML = '';
